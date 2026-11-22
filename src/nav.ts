@@ -21,6 +21,7 @@ export const nav: NavItem[] = [
   // The /api-status debug page still exists — add
   // `{ path: '/api-status', label: 'API Status', devOnly: true }` to surface it.
   // ── Features add nav items below this line ──
+  { path: '/file-manager', label: 'File Manager', roles: ['member' as Role] },
   { path: '/items', label: 'Items', roles: ['member' as Role] },
   { path: '/documents', label: 'Documents', roles: ['member' as Role] },
   { path: '/chat', label: 'Messaging', roles: ['member' as Role] },
