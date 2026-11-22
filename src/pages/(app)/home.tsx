@@ -12,6 +12,7 @@ const LINKS = [
   { href: '/documents', title: 'Shared notes', blurb: 'Co-edit notes in real time.' },
   { href: '/items', title: 'Study tasks', blurb: 'A shared to-do list for the group.' },
   { href: '/assistant', title: 'AI assistant', blurb: 'Your private study helper.' },
+  { href: '/file-manager', title: 'My files', blurb: 'Your personal file storage. Other members can\'t see your files.' },
 ]
 
 export default function HomePage() {
