@@ -23,17 +23,17 @@ export default function ChatPage({
   className,
 }: ChatPageProps) {
   const { channelId, status } = useChatChannel(channelName)
-  const { markAsRead } = useReadReceipts()
+  const { markAsRead, status: receiptsStatus } = useReadReceipts()
   const { user } = useUser()
   const lastMarkedRef = useRef<string | null>(null)
   const canTrackReadState = isWriterRole(user?.role)
 
   useEffect(() => {
-    if (!channelId || !canTrackReadState) return
+    if (!channelId || !canTrackReadState || receiptsStatus !== 'ready') return
     if (lastMarkedRef.current === channelId) return
     lastMarkedRef.current = channelId
     markAsRead(channelId)
-  }, [canTrackReadState, channelId, markAsRead])
+  }, [canTrackReadState, channelId, markAsRead, receiptsStatus])
 
   if (status !== 'ready') {
     // data-testid lets tests (and humans reading a trace) distinguish "stuck
