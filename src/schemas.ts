@@ -19,10 +19,7 @@ import { itemsSchema } from './schemas/items-schema'
 
 import { aiChatSchemas } from './schemas/ai-chat-schema'
 
-import { attachmentsSchema } from './schemas/attachments-schema'
-
 export const schemas: CollectionSchema[] = [
-  attachmentsSchema,
   ...aiChatSchemas,
   itemsSchema,
   ...documentsCollections,
