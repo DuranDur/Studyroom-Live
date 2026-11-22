@@ -221,7 +221,7 @@ export function registerAiChatRoutes(
         : undefined
 
     // User-billed: compaction is part of the user's chat experience, not infra.
-    const summarizer = makeDefaultSummarizer(c.env, { authToken: jwt })
+    const summarizer = makeDefaultSummarizer(c.env, { })
     const { messages: prepared, newSummary } = await prepareMessagesWithCompaction(
       turns,
       DEFAULT_CONTEXT_CONFIG,
@@ -351,7 +351,6 @@ export function registerAiChatRoutes(
     const { result } = streamDeepSpaceAgent(c.env, {
       profile: 'application',
       modelId: usedModelId,
-      authToken: jwt,
       instructions: systemText,
       messages,
       tools,
