@@ -1,5 +1,5 @@
 /** App name — replaced by the CLI during scaffolding */
-export const APP_NAME = 'studyroom-live'
+export const APP_NAME = 'StudyRoom Live'
 
 /** Immutable app identity — data scope keys to this, so renames never
  *  strand your records.
@@ -19,3 +19,5 @@ export const SCOPE_ID = `app:${APP_ID}`
 
 /** Roles and display config — imported from SDK (single source of truth) */
 export { ROLES, ROLE_CONFIG, type Role } from 'deepspace'
+/** Study call link. Replace with your recurring Meet URL. */
+export const MEET_URL = "https://meet.jit.si/StudyRoomLive-4829"

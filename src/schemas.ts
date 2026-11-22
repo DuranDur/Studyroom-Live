@@ -17,11 +17,14 @@ import { documentsCollections } from './schemas/documents-schema'
 
 import { itemsSchema } from './schemas/items-schema'
 
+import { callsSchema } from './schemas/calls-schema'
+
 import { aiChatSchemas } from './schemas/ai-chat-schema'
 
 export const schemas: CollectionSchema[] = [
   ...aiChatSchemas,
   itemsSchema,
+  callsSchema, 
   ...documentsCollections,
   ...messagingSchemas,
   usersSchema,

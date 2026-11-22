@@ -1,28 +1,46 @@
 /**
- * Placeholder home page — replace this with the app's real home.
- *
- * This is intentionally unstyled scaffolding, not a design to build on.
- * Design the app's own look (layout, theme tokens, typography) from your
- * product's point of view instead of extending this page.
+ * Home -- the study room's front door: who you are, the shared call card,
+ * and quick links to the room's tools.
  */
 
 import { useAuthProfileReady } from 'deepspace'
 import { APP_NAME } from '../../constants'
+import CallCard from '../../components/CallCard'
+
+const LINKS = [
+  { href: '/chat', title: 'Chat', blurb: 'Talk with everyone in the room.' },
+  { href: '/documents', title: 'Shared notes', blurb: 'Co-edit notes in real time.' },
+  { href: '/items', title: 'Study tasks', blurb: 'A shared to-do list for the group.' },
+  { href: '/assistant', title: 'AI assistant', blurb: 'Your private study helper.' },
+]
 
 export default function HomePage() {
   const { isSignedIn, user } = useAuthProfileReady({ requireUser: true })
 
   return (
-    <div className="flex min-h-full flex-col items-center justify-center gap-3 bg-background px-6 text-center text-foreground">
-      <h1 className="text-2xl font-semibold">{APP_NAME}</h1>
-      <p className="max-w-md text-sm text-muted-foreground">
-        This is a placeholder page. Replace <code>src/pages/(app)/home.tsx</code>{' '}
-        with the app&apos;s real home, and give the app its own theme in{' '}
-        <code>src/themes.css</code>.
-      </p>
-      {isSignedIn && user && (
-        <p className="text-sm text-muted-foreground">Signed in as {user.name ?? user.email}</p>
-      )}
+    <div className="mx-auto flex min-h-full max-w-3xl flex-col gap-8 bg-background px-6 py-10 text-foreground">
+      <header>
+        <h1 className="text-3xl font-semibold">{APP_NAME}</h1>
+        <p className="mt-1 text-sm text-muted-foreground">
+          A shared study room: chat, notes, tasks, and a call link in one place.
+          {isSignedIn && user ? ` Signed in as ${user.name ?? user.email}.` : ''}
+        </p>
+      </header>
+
+      <CallCard />
+
+      <nav className="grid gap-3 sm:grid-cols-2" aria-label="Room tools">
+        {LINKS.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted"
+          >
+            <p className="font-medium">{link.title}</p>
+            <p className="mt-1 text-sm text-muted-foreground">{link.blurb}</p>
+          </a>
+        ))}
+      </nav>
     </div>
   )
 }
