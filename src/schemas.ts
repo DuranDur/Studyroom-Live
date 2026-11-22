@@ -15,7 +15,10 @@ import { messagingSchemas } from './schemas/messaging-schema'
 
 import { documentsCollections } from './schemas/documents-schema'
 
+import { itemsSchema } from './schemas/items-schema'
+
 export const schemas: CollectionSchema[] = [
+  itemsSchema,
   ...documentsCollections,
   ...messagingSchemas,
   usersSchema,
