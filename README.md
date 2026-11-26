@@ -86,6 +86,7 @@ flowchart LR
 | **Files stay personal** | The platform's file permissions are owner-only or open to every signed-in user. I chose owner-only over leaking file keys to everyone. |
 | **Jitsi instead of Meet** | A Google Meet link belongs to someone's calendar, so joiners wait for that person to admit them. A Jitsi room has no host. |
 | **Guard in `chat.tsx`** | Reloading chat threw a duplicate read-receipt error. The SDK's `useReadReceipts` can create a receipt before its query has loaded. The page now waits until receipts are ready. |
+| **Login at the front door** | The scaffold shipped a static landing page at the root. I took it out, along with the build step that prerendered it, and put the root route behind the sign-in gate. The link now opens on a sign-in page, and signed-in users go straight to the room. |
 
 ## 🚀 Run it locally
 
