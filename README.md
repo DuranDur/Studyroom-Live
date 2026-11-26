@@ -2,7 +2,7 @@
 
 # 📚 StudyRoom Live
 
-**One shared room where a study group chats, co-edits notes, tracks tasks, and hops on a call, without anyone needing to host.**
+**One shared room where a study group chats, co-edits notes, tracks tasks, quizzes each other, and hops on a call, without anyone needing to host.**
 
 [![Live app](https://img.shields.io/badge/live-studyroom--live.app.space-2ea44f?style=for-the-badge)](https://studyroom-live.app.space)
 ![Built on DeepSpace](https://img.shields.io/badge/built%20on-DeepSpace%20SDK-6f42c1?style=for-the-badge)
@@ -24,6 +24,7 @@
 | ✅ | **Study tasks** | A shared task list everyone can add to (items collection). |
 | 📁 | **My files** | Personal file storage on R2. Each member's files are private to them. |
 | 📞 | **Study call card** | Shows **Start call** or **Join call** depending on whether a call is live. Updates for everyone in real time. |
+| ⭐ | **Quiz** | The room builds one shared question bank together. Everyone plays solo, and a leaderboard ranks best runs with stars. |
 | 🤖 | **AI assistant** | DeepSpace AI chat is wired in. See [known limitations](#-known-limitations). |
 
 ## 📞 The call card, the part I built from scratch
@@ -50,12 +51,28 @@ stateDiagram-v2
 Code: [`CallCard.tsx`](src/components/CallCard.tsx) and
 [`calls-schema.ts`](src/schemas/calls-schema.ts).
 
+## ⭐ The quiz, also built from scratch
+
+Two collections of my own, `quiz-questions` and `quiz-attempts`. The room
+builds one shared question bank together, then everyone takes the quiz on
+their own. Questions shuffle every run, and each answer gets instant right
+or wrong feedback.
+
+- The leaderboard ranks players by their best run, with a star rating from
+  that score (5 stars at 90% or better).
+- Every finished run is saved, so the board and recent scores survive a
+  refresh.
+- Any member can add questions. You can only change or delete your own.
+
+Code: [`quiz.tsx`](src/pages/(app)/(protected)/quiz.tsx) and
+[`quiz-schema.ts`](src/schemas/quiz-schema.ts).
+
 ## 🧩 How it fits together
 
 ```mermaid
 flowchart LR
     U["Member's browser"] -->|"sign in and live sync"| W["DeepSpace app on Cloudflare Workers"]
-    W --> D[("Records: chat, tasks, calls, notes")]
+    W --> D[("Records: chat, tasks, calls, notes, quiz")]
     W --> R[("R2: personal files")]
     W --> A["AI chat route"]
     U -->|"Start or Join call"| J["Jitsi room"]
