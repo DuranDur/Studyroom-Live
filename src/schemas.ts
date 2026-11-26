@@ -19,12 +19,16 @@ import { itemsSchema } from './schemas/items-schema'
 
 import { callsSchema } from './schemas/calls-schema'
 
+import { quizQuestionsSchema, quizAttemptsSchema } from './schemas/quiz-schema'
+
 import { aiChatSchemas } from './schemas/ai-chat-schema'
 
 export const schemas: CollectionSchema[] = [
   ...aiChatSchemas,
   itemsSchema,
   callsSchema, 
+  quizQuestionsSchema,
+  quizAttemptsSchema,
   ...documentsCollections,
   ...messagingSchemas,
   usersSchema,

@@ -26,4 +26,5 @@ export const nav: NavItem[] = [
   { path: '/documents', label: 'Documents', roles: ['member' as Role] },
   { path: '/file-manager', label: 'My files', roles: ['member' as Role] },
   { path: '/chat', label: 'Chat', roles: ['member' as Role] },
+  { path: '/quiz', label: 'Quiz', roles: ['member' as Role] },
 ]
